@@ -1,189 +1,71 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shariful Automatic</title>
+<title>Shariful Automatic - Smart Digital Solution</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;color:#172033;line-height:1.7}
-a{text-decoration:none;color:inherit}
-.container{width:92%;max-width:1100px;margin:auto}
-header{background:white;padding:18px 0;box-shadow:0 2px 12px #0001}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-.logo{font-size:23px;font-weight:bold;color:#1264d8}
-nav{display:flex;gap:18px;flex-wrap:wrap}
-nav a{font-size:14px;font-weight:bold}
-.btn,button{display:inline-block;border:0;background:#1264d8;color:white;padding:12px 18px;border-radius:7px;cursor:pointer;font-weight:bold}
-.hero{background:linear-gradient(120deg,#101d3d,#1264d8);color:white;padding:70px 0}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
-.hero h1{font-size:clamp(34px,5vw,55px);line-height:1.2;margin:15px 0}
-.hero p{color:#e0eaff;margin-bottom:25px}
-.hero img{width:100%;border-radius:18px;min-height:240px;object-fit:cover}
-section{padding:60px 0}
-.heading{text-align:center;margin-bottom:30px}
-.heading h2{font-size:32px;margin-bottom:8px}
-.heading p,.service p{color:#667085}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.service{border:1px solid #e4e8ef;padding:24px;border-radius:14px;background:white}
-.service .icon{font-size:32px;margin-bottom:8px}
-.service h3{margin-bottom:8px}
-.light{background:#f3f7ff}
-.price{font-size:26px;font-weight:bold;color:#1264d8;margin:12px 0}
-ul{padding-left:20px;margin:15px 0}
-.contact{background:#101d3d;color:white}
-.contact p{margin:8px 0}
-.contact a{color:#a9d2ff}
-form{background:white;color:#172033;padding:24px;border-radius:12px}
-input,select,textarea{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ccd3df;border-radius:6px;font:inherit}
-textarea{min-height:90px}
-footer{background:#080f1c;color:white;padding:22px;text-align:center}
-@media(max-width:700px){
- .hero-grid{grid-template-columns:1fr}
- .grid{grid-template-columns:1fr}
- nav{gap:12px}
- .hero{padding:45px 0}
- .heading h2{font-size:27px}
-}
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Hind Siliguri',sans-serif;background:#f8faff;color:#222}
+header{background:white;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.logo{font-weight:700;color:#1a4ed1;font-size:20px}
+.hero{background:linear-gradient(135deg,#0f3cc9,#2b6bf2);color:white;padding:50px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.hero-text{flex:1;min-width:280px}
+.hero-text small{letter-spacing:2px;opacity:0.8}
+.hero-text h1{font-size:32px;line-height:1.3;margin:15px 0}
+.hero-text p{opacity:0.9;font-size:15px;margin-bottom:25px}
+.btn{background:#fff;color:#0f3cc9;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:700}
+.hero-img{flex:1;min-width:280px;border-radius:12px;overflow:hidden}
+.hero-img img{width:100%;border-radius:12px}
+.services{padding:50px 20px;text-align:center;max-width:1100px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:25px;text-align:left}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 15px rgba(0,0,0,0.06)}
+.card h4{margin-bottom:8px;color:#0f3cc9}
+.footer{background:#0a1a4d;color:white;text-align:center;padding:20px;font-size:14px;margin-top:30px}
+/* WhatsApp Floating Button */
+.wa-float{position:fixed;bottom:22px;right:22px;background:#25D366;color:white;width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.25);z-index:999;animation: pulse 2s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
 </style>
 </head>
 <body>
 
 <header>
-<div class="container nav">
-<a class="logo" href="#home">Shariful Automatic</a>
-<nav>
-<a href="#home">Home / হোম</a>
-<a href="#services">Services / সেবা</a>
-<a href="#about">About / পরিচিতি</a>
-<a href="#contact">Contact / যোগাযোগ</a>
-</nav>
-<button onclick="toggleLanguage()">বাংলা / English</button>
-</div>
+<div class="logo">Shariful Automatic</div>
+<div style="font-size:13px">Home • Services • Portfolio</div>
 </header>
 
-<section class="hero" id="home">
-<div class="container hero-grid">
-<div>
-<p>WELCOME TO SHARIFUL AUTOMATIC</p>
-<h1 data-en="Smart Digital Solutions for Your Future" data-bn="আপনার ভবিষ্যতের জন্য স্মার্ট ডিজিটাল সমাধান">আপনার ভবিষ্যতের জন্য স্মার্ট ডিজিটাল সমাধান</h1>
-<p data-en="Website design, digital services and smart automation for businesses and creators." data-bn="ব্যবসা ও কনটেন্ট ক্রিয়েটরদের জন্য ওয়েবসাইট ডিজাইন, ডিজিটাল সেবা ও অটোমেশন।">ব্যবসা ও কনটেন্ট ক্রিয়েটরদের জন্য ওয়েবসাইট ডিজাইন, ডিজিটাল সেবা ও অটোমেশন।</p>
-<a class="btn" href="https://wa.me/8801814054202">WhatsApp-এ যোগাযোগ করুন</a>
+<section class="hero">
+<div class="hero-text">
+<small>WELCOME TO SHARIFUL AUTOMATIC</small>
+<h1>আপনার ভবিষ্যতের জন্য স্মার্ট ডিজিটাল সমাধান</h1>
+<p>ব্যবসা ও কনটেন্ট ক্রিয়েটরদের জন্য ওয়েবসাইট ডিজাইন, ডিজিটাল সেবা ও অটোমেশন।</p>
+<a class="btn" href="https://wa.me/8801814054202?text=আসসালামু%20আলাইকুম%20ভাই%2C%20আমি%20Shariful%20Automatic%20এর%20সার্ভিস%20নিতে%20চাই" target="_blank">WhatsApp-এ যোগাযোগ করুন - 01814-054202</a>
 </div>
-<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85" alt="Modern digital workspace">
+<div class="hero-img">
+<img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600" alt="Office">
 </div>
 </section>
 
-<section id="services">
-<div class="container">
-<div class="heading">
+<section class="services">
 <h2>Our Services / আমাদের সেবা</h2>
-<p>আপনার প্রয়োজনীয় ডিজিটাল সেবা এক জায়গায়</p>
-</div>
+<p>আপনার প্রয়োজনীয় ডিজিটাল সেবা এক জায়গায়</p>
 <div class="grid">
-<div class="service"><div class="icon">💻</div><h3>Website Design</h3><p>আধুনিক ও মোবাইল উপযোগী ওয়েবসাইট তৈরি।</p></div>
-<div class="service"><div class="icon">🤖</div><h3>Smart Automation</h3><p>ডিজিটাল কাজ সহজ করা এবং সময় বাঁচানোর সমাধান।</p></div>
-<div class="service"><div class="icon">📱</div><h3>Social Media</h3><p>আপনার অনলাইন পেজ ও ব্র্যান্ডের পরিচিতি উন্নত করা।</p></div>
-<div class="service"><div class="icon">🛒</div><h3>E-commerce</h3><p>অনলাইনে পণ্য প্রদর্শন ও বিক্রির ওয়েবসাইট।</p></div>
-<div class="service"><div class="icon">✍️</div><h3>Content & Blogging</h3><p>ওয়েবসাইটে আর্টিকেল, খবর ও কনটেন্ট প্রকাশ।</p></div>
-<div class="service"><div class="icon">⚙️</div><h3>Digital Solutions</h3><p>আপনার কাজের প্রয়োজন অনুযায়ী ডিজিটাল সমাধান।</p></div>
-</div>
+<div class="card"><h4>💻 Website Design</h4><p>আধুনিক ও মোবাইল উপযোগী ওয়েবসাইট।</p></div>
+<div class="card"><h4>🤖 Smart Automation</h4><p>কাজ সহজ করা ও সময় বাঁচানোর সমাধান।</p></div>
+<div class="card"><h4>📱 Social Media</h4><p>অনলাইন পেজ ও ব্র্যান্ড পরিচিতি।</p></div>
+<div class="card"><h4>🛒 E-commerce</h4><p>অনলাইন পণ্য বিক্রির ওয়েবসাইট।</p></div>
+<div class="card"><h4>✍️ Content & Blog</h4><p>আর্টিকেল, খবর ও কনটেন্ট প্রকাশ।</p></div>
+<div class="card"><h4>⚙️ Digital Solution</h4><p>আপনার কাজের ডিজিটাল সমাধান।</p></div>
 </div>
 </section>
 
-<section class="light" id="about">
-<div class="container">
-<div class="heading">
-<h2>About Shariful Automatic</h2>
-<p>প্রযুক্তি ও ডিজিটাল সেবার মাধ্যমে সামনে এগিয়ে যাওয়ার লক্ষ্য।</p>
+<div class="footer">
+<p>© 2026 Shariful Automatic | Cox's Bazar, Bangladesh</p>
+<p>WhatsApp: 01814-054202 | Email: shariful@example.com</p>
 </div>
-<div class="grid">
-<div class="service"><h3>🎯 Our Mission</h3><p>সহজ, সুন্দর ও কার্যকর ডিজিটাল সমাধান মানুষের কাছে পৌঁছে দেওয়া।</p></div>
-<div class="service"><h3>📈 Our Vision</h3><p>একটি পরিচিত ও নির্ভরযোগ্য ডিজিটাল ব্র্যান্ড গড়ে তোলা।</p></div>
-<div class="service"><h3>🤝 Customer First</h3><p>গ্রাহকের প্রয়োজন বুঝে উপযুক্ত সমাধানের পরিকল্পনা করা।</p></div>
-</div>
-</div>
-</section>
 
-<section>
-<div class="container">
-<div class="heading">
-<h2>Sample Packages / নমুনা প্যাকেজ</h2>
-<p>প্রকাশের আগে নিজের প্রকৃত মূল্য নির্ধারণ করুন।</p>
-</div>
-<div class="grid">
-<div class="service"><h3>Starter</h3><div class="price">৳3,000 থেকে</div><p>ছোট ও সাধারণ ওয়েবসাইটের জন্য।</p><a class="btn" href="https://wa.me/8801814054202">বিস্তারিত</a></div>
-<div class="service"><h3>Business</h3><div class="price">৳7,500 থেকে</div><p>ব্যবসায়িক ওয়েবসাইটের জন্য।</p><a class="btn" href="https://wa.me/8801814054202">বিস্তারিত</a></div>
-<div class="service"><h3>Premium</h3><div class="price">৳15,000 থেকে</div><p>বিশেষ প্রয়োজনের ওয়েবসাইটের জন্য।</p><a class="btn" href="https://wa.me/8801814054202">বিস্তারিত</a></div>
-</div>
-</div>
-</section>
-
-<section class="contact" id="contact">
-<div class="container">
-<div class="heading">
-<h2>Contact Us / যোগাযোগ করুন</h2>
-<p>আপনার কাজের কথা আমাদের জানান।</p>
-</div>
-<div class="grid">
-<div>
-<p>📧 Email: <a href="mailto:sharifulmoon99@gmail.com">sharifulmoon99@gmail.com</a></p>
-<p>📱 WhatsApp: <a href="https://wa.me/8801814054202">+8801814054202</a></p>
-<p>🌐 Facebook: <a href="https://www.facebook.com/share/18zesFapjU/" target="_blank" rel="noopener">আমাদের Facebook পেজ</a></p>
-<br>
-<a class="btn" href="https://www.facebook.com/share/18zesFapjU/" target="_blank" rel="noopener">Facebook Page দেখুন</a>
-</div>
-<form id="contactForm">
-<h3>WhatsApp-এ মেসেজ পাঠান</h3>
-<label>আপনার নাম</label>
-<input id="name" required placeholder="আপনার নাম লিখুন">
-<label>ফোন নম্বর</label>
-<input id="phone" required placeholder="আপনার ফোন নম্বর">
-<label>কী সেবা চান?</label>
-<select id="service">
-<option>Website Design</option>
-<option>Smart Automation</option>
-<option>E-commerce</option>
-<option>Social Media</option>
-<option>Other</option>
-</select>
-<label>বিস্তারিত</label>
-<textarea id="message" placeholder="আপনার প্রয়োজন লিখুন"></textarea>
-<button type="submit">WhatsApp-এ পাঠান →</button>
-</form>
-</div>
-</div>
-</section>
-
-<footer>
-<p>© <span id="year"></span> Shariful Automatic | All Rights Reserved</p>
-<p>বাংলাদেশ থেকে ডিজিটাল সমাধান 🇧🇩</p>
-</footer>
-
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-
-let lang="bn";
-function toggleLanguage(){
- lang=lang==="bn"?"en":"bn";
- document.querySelectorAll("[data-en][data-bn]").forEach(el=>{
-  el.textContent=el.getAttribute("data-"+lang);
- });
- document.documentElement.lang=lang;
-}
-
-document.getElementById("contactForm").addEventListener("submit",function(e){
- e.preventDefault();
- const name=document.getElementById("name").value.trim();
- const phone=document.getElementById("phone").value.trim();
- const service=document.getElementById("service").value;
- const message=document.getElementById("message").value.trim();
- const text="Shariful Automatic Website Enquiry\nName: "+name+
- "\nCustomer Phone: "+phone+"\nService: "+service+"\nDetails: "+message;
- window.open("https://wa.me/8801814054202?text="+encodeURIComponent(text),"_blank");
-});
-</script>
+<a class="wa-float" href="https://wa.me/8801814054202?text=আসসালামু%20আলাইকুম%20ভাই%2C%20আমি%20Shariful%20Automatic%20এর%20সার্ভিস%20নিতে%20চাই" target="_blank">💬</a>
 
 </body>
 </html>
