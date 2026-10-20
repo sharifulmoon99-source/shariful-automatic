@@ -2,9 +2,9 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boss One Click</title>
+<title>Boss Lifetime Admin</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#0f172a;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}.box{background:white;width:100%;max-width:400px;padding:20px;border-radius:12px}h2{text-align:center;color:#1264d8;margin-bottom:10px}input,button{width:100%;padding:14px;margin:8px 0;border:1px solid #ccc;border-radius:8px;font-size:16px}button{border:0;background:#1264d8;color:white;font-weight:bold}#status{text-align:center;margin-top:10px;font-weight:bold}.hidden{display:none}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#0f172a;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}.box{background:white;width:100%;max-width:420px;padding:22px;border-radius:14px}h2{text-align:center;color:#1264d8}input,button{width:100%;padding:13px;margin:7px 0;border:1px solid #ccc;border-radius:8px;font-size:15px}button{border:0;background:#1264d8;color:white;font-weight:bold;cursor:pointer}.green{background:#16a34a}#status{text-align:center;margin-top:10px;font-weight:bold;font-size:14px}.hidden{display:none}.label{font-size:13px;color:#555;margin-top:5px}
 </style>
 </head>
 <body>
@@ -12,10 +12,13 @@
 <h2>🔒 Boss Admin</h2>
 <div id="loginBox"><input type="password" id="pass" placeholder="Shariful123"><button onclick="login()">Login</button></div>
 <div id="mainBox" class="hidden">
-<p style="text-align:center">তোমার ভিডিও রেডি আছে: <br><b>XRecorder_20261017_02.mp4</b></p>
-<button onclick="addVideo()" id="btn" style="background:#16a34a">✅ ১ ক্লিকে Main সাইটে বসাও</button>
+<p class="label">ভিডিও টাইটেল:</p>
+<input type="text" id="title" placeholder="আলহামদুলিল্লাহ 🥰" value="আলহামদুলিল্লাহ শুরু করেছি 🥰">
+<p class="label">GitHub এ যে নামে আপলোড করেছো (যেমন XRecorder_...mp4):</p>
+<input type="text" id="filename" placeholder="XRecorder_20261017_02.mp4">
+<button class="green" onclick="addVideo()" id="btn">✅ ১ ক্লিকে Main সাইটে বসাও</button>
 <p id="status"></p>
-<a href="index.html" style="display:block;text-align:center;margin-top:15px;color:#1264d8;text-decoration:none">← Main Site দেখো</a>
+<a href="index.html" style="display:block;text-align:center;margin-top:12px;color:#1264d8;text-decoration:none">← Main Site</a>
 </div>
 </div>
 <script type="module">
@@ -24,16 +27,20 @@ import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.g
 const firebaseConfig={apiKey:"AIzaSyAtWP11UICBmkCuYNjFAhPJYgjmFDHE",authDomain:"shariful-automation.firebaseapp.com",projectId:"shariful-automation",storageBucket:"shariful-automation.firebasestorage.app",messagingSenderId:"334934399156",appId:"1:334934399156:web:47a4c55f559d8448f833a1"};
 const app=initializeApp(firebaseConfig);const db=getFirestore(app);
 if(localStorage.getItem("isAdmin")==="true") show();
-window.login=()=>{if(document.getElementById("pass").value==="Shariful123"){localStorage.setItem("isAdmin","true");show();}else alert("ভুল পাসওয়ার্ড");};
+window.login=()=>{if(document.getElementById("pass").value==="Shariful123"){localStorage.setItem("isAdmin","true");show();}else alert("ভুল");};
 function show(){document.getElementById("loginBox").classList.add("hidden");document.getElementById("mainBox").classList.remove("hidden");}
 window.addVideo=async()=>{
+ const title=document.getElementById("title").value||"আলহামদুলিল্লাহ";
+ const filename=document.getElementById("filename").value.trim();
  const s=document.getElementById("status");const b=document.getElementById("btn");
- b.disabled=true; s.style.color="blue"; s.textContent="⏳ বসাচ্ছি বস...";
+ if(!filename){alert("বস ফাইলের নাম লেখো! যেমন XRecorder_...mp4");return;}
+ b.disabled=true; s.style.color="blue"; s.textContent="⏳ বসাচ্ছি...";
  try{
-  const videoUrl="https://sharifulmoon99-source.github.io/shariful-automatic/XRecorder_20261017_02.mp4";
-  await addDoc(collection(db,"videos"),{title:"আলহামদুলিল্লাহ শুরু করেছি 🥰", url:videoUrl, likes:0, createdAt:serverTimestamp()});
-  s.style.color="green"; s.innerHTML="🎉 DONE বস! <br> Main সাইটে চলে গেছে! নিচের লিংকে যাও!";
- }catch(e){ s.style.color="red"; s.textContent="❌ Error: "+e.message; b.disabled=false;}
+  const videoUrl=`https://sharifulmoon99-source.github.io/shariful-automatic/${filename}`;
+  await addDoc(collection(db,"videos"),{title, url:videoUrl, likes:0, createdAt:serverTimestamp()});
+  s.style.color="green"; s.innerHTML=`🎉 DONE বস! <br> <a href="index.html" style="color:green">Main সাইট দেখো</a>`;
+  document.getElementById("filename").value="";
+ }catch(e){ s.style.color="red"; s.textContent="❌ "+e.message; b.disabled=false;}
 };
 </script>
 </body>
