@@ -1,53 +1,50 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin - Easy</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boss Final Admin</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#0f172a;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}.box{background:white;color:#172033;width:100%;max-width:450px;padding:25px;border-radius:14px}h2{text-align:center;color:#1264d8;margin-bottom:15px}input,button{width:100%;padding:12px;margin:8px 0;border:1px solid #ccd3df;border-radius:6px}button{border:0;background:#1264d8;color:white;font-weight:bold;cursor:pointer}#status{text-align:center;font-size:13px;margin-top:10px}.hidden{display:none}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#0f172a;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}.box{background:white;width:100%;max-width:450px;padding:25px;border-radius:14px}h2{text-align:center;color:#1264d8}input,button{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}button{border:0;background:#1264d8;color:white;font-weight:bold;cursor:pointer}#status{text-align:center;margin-top:10px;font-size:13px}.hidden{display:none}
 </style>
 </head>
 <body>
 <div class="box">
 <h2>🔒 Boss Admin</h2>
-<div id="loginBox">
-<input type="password" id="pass" placeholder="Password">
-<button onclick="login()">Login</button>
-</div>
+<div id="loginBox"><input type="password" id="pass" placeholder="Password: Shariful123"><button onclick="login()">Login</button></div>
 <div id="uploadBox" class="hidden">
-<input type="text" id="title" placeholder="ভিডিও টাইটেল">
+<input type="text" id="title" placeholder="ভিডিও টাইটেল লেখো 🥰">
 <input type="file" id="file" accept="video/*">
-<button onclick="upload()">এক ক্লিকে আপলোড</button>
-<p id="status">বস, ভিডিও সিলেক্ট করে আপলোড দাও, বাকি আমি করবো!</p>
-<a href="index.html" style="display:block;text-align:center;margin-top:12px;color:#1264d8">← Main Site</a>
+<button id="btn" onclick="upload()">🚀 এক ক্লিকে আপলোড</button>
+<p id="status"></p>
+<a href="index.html" style="display:block;text-align:center;margin-top:12px;color:#1264d8">← Main Site দেখো</a>
 </div>
 </div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-const firebaseConfig = { apiKey: "AIzaSyAtWP11UICBmkCuYNjFAhPJYgjmFDHE", authDomain: "shariful-automation.firebaseapp.com", projectId: "shariful-automation", storageBucket: "shariful-automation.firebasestorage.app", messagingSenderId: "334934399156", appId: "1:334934399156:web:47a4c55f559d8448f833a1" };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const firebaseConfig={apiKey:"AIzaSyAtWP11UICBmkCuYNjFAhPJYgjmFDHE",authDomain:"shariful-automation.firebaseapp.com",projectId:"shariful-automation",storageBucket:"shariful-automation.firebasestorage.app",messagingSenderId:"334934399156",appId:"1:334934399156:web:47a4c55f559d8448f833a1"};
+const app=initializeApp(firebaseConfig);const db=getFirestore(app);
 const PASS="Shariful123";
 if(localStorage.getItem("isAdmin")==="true") show();
-window.login=()=>{ if(document.getElementById("pass").value===PASS){ localStorage.setItem("isAdmin","true"); show(); } else alert("ভুল পাসওয়ার্ড"); };
-function show(){ document.getElementById("loginBox").classList.add("hidden"); document.getElementById("uploadBox").classList.remove("hidden"); }
+window.login=()=>{if(document.getElementById("pass").value===PASS){localStorage.setItem("isAdmin","true");show();}else alert("ভুল পাসওয়ার্ড");};
+function show(){document.getElementById("loginBox").classList.add("hidden");document.getElementById("uploadBox").classList.remove("hidden");}
 window.upload=async()=>{
-  const file=document.getElementById("file").files[0];
-  const title=document.getElementById("title").value||"Shariful Video";
-  const status=document.getElementById("status");
-  if(!file){ alert("ভিডিও সিলেক্ট করো বস!"); return; }
-  status.textContent="⏳ ফ্রি Cloud এ আপলোড হচ্ছে বস, একটু অপেক্ষা করো...";
-  try{
-    const form=new FormData(); form.append("reqtype","fileupload"); form.append("fileToUpload",file);
-    const res=await fetch("https://catbox.moe/user/api.php",{method:"POST",body:form});
-    const url=await res.text();
-    if(!url.startsWith("https")) throw new Error(url);
-    await addDoc(collection(db,"videos"),{title,url:url.trim(),likes:0,createdAt:serverTimestamp()});
-    status.textContent="✅ DONE বস! ভিডিও পার্মানেন্ট সেভ! Main সাইটে চলে গেছে!";
-    document.getElementById("file").value=""; document.getElementById("title").value="";
-  }catch(e){ status.textContent="❌ Error: "+e.message+" - আবার চেষ্টা করো বস!"; }
+ const title=document.getElementById("title").value||"আলহামদুলিল্লাহ শুরু করেছি 🥰";
+ const file=document.getElementById("file").files[0];
+ const s=document.getElementById("status"); const btn=document.getElementById("btn");
+ if(!file){alert("বস ভিডিও সিলেক্ট করো!");return;}
+ btn.disabled=true; s.style.color="blue"; s.textContent="⏳ আপলোড হচ্ছে বস, ১ মিনিট অপেক্ষা করো...";
+ try{
+  const fd=new FormData(); fd.append("reqtype","fileupload"); fd.append("fileToUpload",file);
+  const res=await fetch("https://catbox.moe/user/api.php",{method:"POST",body:fd});
+  const link=(await res.text()).trim();
+  if(!link.startsWith("http")) throw new Error(link);
+  s.textContent="✅ লিংক পেয়েছি! এখন সাইটে সেভ করছি...";
+  await addDoc(collection(db,"videos"),{title,url:link,likes:0,createdAt:serverTimestamp()});
+  s.style.color="green"; s.textContent="🎉 DONE বস! Main সাইটে চলে গেছে!";
+  document.getElementById("title").value=""; document.getElementById("file").value="";
+ }catch(e){ s.style.color="red"; s.textContent="❌ Error: "+e.message+" | আবার চেষ্টা করো বস!"; }
+ btn.disabled=false;
 };
 </script>
 </body>
